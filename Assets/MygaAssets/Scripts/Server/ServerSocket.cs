@@ -106,11 +106,11 @@ namespace MygaServer
             switch (connectStatus)
             {
                 case ConnectStatus.connected:
-                    ServerEventSystem.PackageRecieved(_so.buffer);
+                    ServerEventSystem.PackageRecieved(_so.buffer, Server.GetClient(_clientEndPoint));
                     break;
                 case ConnectStatus.already:
                     DisconnectCheck(_clientEndPoint, _so);
-                    ServerEventSystem.PackageRecieved(_so.buffer);
+                    ServerEventSystem.PackageRecieved(_so.buffer, Server.GetClient(_clientEndPoint));
                     break;
             }
 

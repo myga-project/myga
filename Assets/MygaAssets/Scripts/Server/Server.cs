@@ -20,7 +20,10 @@ namespace MygaServer
         public static void Start(string ip, int port, int maxPlayers)
         {
             if (Running)
+            {
                 Debug.LogError("Server is already running!");
+                return;
+            }
 
             Ip = ip;
             Port = port;
@@ -39,18 +42,24 @@ namespace MygaServer
             ServerSocket.Close();
         }
 
-        public static void SendAll(Package _package)
+        public static void SendAll(Package _package, int exceptID = -1)
         {
             foreach (Client client in clients)
             {
+                if (client.id == exceptID)
+                    continue;
+
                 client.Send(_package);
             }
         }
 
-        public static void SendAll(byte[] _data)
+        public static void SendAll(byte[] _data, int exceptID = -1)
         {
             foreach (Client client in clients)
             {
+                if (client.id == exceptID)
+                    continue;
+
                 client.Send(_data);
             }
         }

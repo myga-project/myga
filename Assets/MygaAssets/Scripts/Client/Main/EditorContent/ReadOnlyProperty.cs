@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace MygaClient
 {
+#if UNITY_EDITOR
     public sealed class ReadOnlyAttribute : PropertyAttribute
     {
 
@@ -24,4 +25,5 @@ namespace MygaClient
             GUI.enabled = true;
         }
     }
+#endif
 }

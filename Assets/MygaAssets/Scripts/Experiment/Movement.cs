@@ -7,11 +7,11 @@ namespace MygaClient
     [RequireComponent(typeof(MygaTransform))]
     public class Movement : MonoBehaviour
     {
-        private MygaTransform serverTransform;
+
 
         void Start()
         {
-            serverTransform = GetComponent<MygaTransform>();
+
         }
 
         void Update()

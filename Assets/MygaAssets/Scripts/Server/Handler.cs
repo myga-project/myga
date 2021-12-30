@@ -41,9 +41,9 @@ namespace MygaServer
             ServerEventSystem.OnPackageRecieved(OnTransformPackage, (int)PackageID.Transform);
         }
 
-        public static void OnTransformPackage(byte[] data)
+        public static void OnTransformPackage(byte[] data, Client client)
         {
-            Server.SendAll(data);
+            Server.SendAll(data, client.id);
         }
     }
 }

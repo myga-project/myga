@@ -6,6 +6,7 @@ namespace MygaClient
 {
     public class MygaTransform : MPAddon
     {
+#if UNITY_EDITOR
         [ReadOnly] [SerializeField] private Vector3 syncedPosition = Vector3.zero;
         public Vector3 SyncedPosition => syncedPosition;
 
@@ -14,6 +15,16 @@ namespace MygaClient
 
         [ReadOnly] [SerializeField] private Vector3 syncedScale = Vector3.zero;
         public Vector3 SyncedScale => syncedScale;
+#else
+        [SerializeField] private Vector3 syncedPosition = Vector3.zero;
+        public Vector3 SyncedPosition => syncedPosition;
+
+        [SerializeField] private Quaternion syncedRotation = Quaternion.identity;
+        public Quaternion SyncedRotation => syncedRotation;
+
+        [SerializeField] private Vector3 syncedScale = Vector3.zero;
+        public Vector3 SyncedScale => syncedScale;
+#endif
 
         private void Start()
         {

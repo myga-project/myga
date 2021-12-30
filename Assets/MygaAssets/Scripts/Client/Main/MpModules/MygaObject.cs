@@ -16,9 +16,13 @@ namespace MygaClient
 
         public List<MPAddon> addons { get; private set; } = new List<MPAddon>();
 
-        public void Initialize(int _id, int _clientID = -1, bool _mine = false)
+        private void Start()
         {
             MygaNetwork.mpObjects.Add(this);
+        }
+
+        public void Initialize(int _id, int _clientID = -1, bool _mine = false)
+        {
 
             id = _id;
             if(_clientID > -1)
